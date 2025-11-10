@@ -3,7 +3,12 @@ package personnages;
 public class Gaulois {
 	private String nom;
 	private int force;
-	int effetPotion = 1;
+	private int effetPotion = 1;
+	private Village village;
+
+	public void setVillage(Village village) {
+		this.village = village;
+	}
 
 	public Gaulois(String nom, int force) {
 		this.nom = nom;
@@ -37,5 +42,18 @@ public class Gaulois {
 
 	public void boirePotion(int forcePotion) {
 		effetPotion = forcePotion;
+	}
+
+	public void sePresenter() {
+		if (village == null) {
+			parler("Bonjour, je m'appelle " + nom + "Je voyage de villages en villages");
+		} else if (this.equals(village.getChef())) {
+			System.out.println("Le Gaulois " + nom + " : \"Bonjour, je m'appelle " + nom
+					+ ". Je suis le chef du village " + village.getNom() + ".\"");
+		} else {
+			System.out.println("Le Gaulois " + nom + " : \"Bonjour, je m'appelle " + nom + ". J'habite le village "
+					+ village.getNom() + ".\"");
+		}
+
 	}
 }
